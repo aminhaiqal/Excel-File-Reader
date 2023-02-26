@@ -13,7 +13,7 @@
 
 #title {
     position: absolute;
-    top: 2rem;
+    top: 1.4rem;
 
     font-family: 'Montserrat';
     font-style: normal;
@@ -21,4 +21,125 @@
     font-size: 20px;
 
     color: #FFFFFF;
+}
+
+box {
+    position: relative;
+    width: 100%;
+    height: 14.8rem;
+    top: 4rem;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px 14px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+#arrow-up {
+    width: 3rem;
+    height: 3rem;
+}
+
+#ellipse {
+    border-radius: min(100%, 100%);
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    left: 12.8rem;
+    top: 2rem;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+#action-text {
+    position: absolute;
+    width: 321px;
+    height: 19px;
+    left: 100px;
+    top: 10rem;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.004em;
+
+    color: #2F3B4E;
+}
+
+#description {
+    position: absolute;
+    width: 81px;
+    height: 17px;
+    left: 13.5rem;
+    top: 11.5rem;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: 0.004em;
+    color: #2F3B4E;
+}
+
+#text{
+    position: absolute;
+    font-family: 'Inter';
+    font-style: normal;
+    left: 36rem;
+    top: 2.8rem;
+}
+
+#file-name, #file-path {
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #2F3B4E;
+}
+
+#file-name-example, #file-path-example {
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration-line: underline;
+
+    color: #2F3B4E;
+}
+
+#search-box {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 60rem;
+    height: 2.5rem;
+    top: 20.6rem;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 7px;
+}
+
+#search {
+    margin: 1rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #000000;
+}
+
+#search-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 1.2rem;
+}
+
+#table{
+    position: absolute;
+    top: 25rem;
+    width: 70rem;
 }
