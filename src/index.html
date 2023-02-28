@@ -40,7 +40,7 @@
                 <div class="col-sm-12 d-flex justify-content-center align-items-center">
                     <div class="d-flex align-items-center" id="search-box">
                         <img src="/icons/search.svg" alt="search" id="search-icon">
-                        <input type="text" name="search" id="search-bar" placeholder="Search...">
+                        <input type="text" name="search" id="search-bar" placeholder="Search..." ng-model="search">
                     </div>
                 </div>
             </div>
@@ -48,12 +48,24 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th scope="col">no</th>
+                            <th scope="col">Id opt</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Date Joined</th>
+                            <th scope="col">Section</th>
+                            <th scope="col">Line</th>
+                            <th scope="col">Date Resign</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="data in jsonData track by $index">
+                        <tr ng-repeat="data in jsonData | filter : search">
+                            <th scope="row">{{data.no}}</th>
+                            <td>{{data["id opt"]}}</td>
                             <td>{{data.name}}</td>
+                            <td>{{data["joined date"]}}</td>
+                            <td>{{data.section}}</td>
+                            <td>{{data.line}}</td>
+                            <td>{{data["resigned date"]}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,20 +74,3 @@
     </div>
 </body>
 </html>
-
-<!--
-    <th scope="col">no</th>
-                            <th scope="col">Id opt</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Date Joined</th>
-                            <th scope="col">Section</th>
-                            <th scope="col">Line</th>
-                            <th scope="col">Date Resign</th>
-    
-    <th scope="row">{{item.no}}</th>
-                            <td>{{item["id opt"]}}</td>
-                            <td>{{item.name}}</td>
-                            <td>{{item["joined date"]}}</td>
-                            <td>{{item.section}}</td>
-                            <td>{{item.line}}</td>
-                            <td>{{item["resigned date"]}}</td>-->

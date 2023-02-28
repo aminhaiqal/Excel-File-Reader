@@ -1,10 +1,10 @@
 var app = angular.module('app', ['ngRoute']);
 app.controller("MainCtrl", function ($scope) {
   $scope.jsonData = [];
+
   const dropZone = document.getElementById("drop-zone");
   dropZone.addEventListener("dragover", handleDragOver);
   dropZone.addEventListener("drop", handleFileDrop);
-  //console.log(dropZone);
 
   // Handle dragover event
   function handleDragOver(event) {
@@ -34,8 +34,8 @@ app.controller("MainCtrl", function ($scope) {
       const workbook = XLSX.read(data, { type: "array" });
       const worksheet = workbook.Sheets["Sheet1"];
       if (worksheet) {
-        $scope.jsonData = XLSX.utils.sheet_to_json(worksheet);
-        console.log($scope.jsonData);
+        const json = XLSX.utils.sheet_to_json(worksheet);
+        iterator(json);
       } else {
         console.error("Sheet1 not found in workbook");
       }
@@ -44,5 +44,25 @@ app.controller("MainCtrl", function ($scope) {
       console.error("File could not be read! Code " + event.target.error.code);
     };
     reader.readAsArrayBuffer(files[0]);
+  }
+
+  // Json-Date converter
+  function convertDate(date) {
+    const jsDate = XLSX.SSF.parse_date_code(date);
+    const convertedDate = new Date(jsDate.y, jsDate.m - 1, jsDate.d);
+    const dateString = convertedDate.toISOString();
+    const dateWithoutTime = dateString.substring(0, 10);
+    
+    return dateWithoutTime;
+  }
+
+  // json Iterator
+  function iterator(json) {
+    for (let i = 0; i < json.length; i++) {
+      $scope.jsonData.push(json[i]);
+      $scope.jsonData[i]["joined date"] = convertDate(json[i]["joined date"]);
+      $scope.jsonData[i]["resigned date"] = convertDate(json[i]["resigned date"]);
+    }
+    $scope.$apply();
   }
 });
