@@ -14,59 +14,68 @@
     <link rel="stylesheet" href="index.css">
     <title>Excel File Reader</title>
 </head>
-<body ng-app="ExcelFileReader">
-    <rectangle id="container"></rectangle>
-    <div class="container" ng-controller="DataReader">
-        <div class="row">
-            <div class="col-sm-12 d-flex justify-content-center">
-                <h3 id="title">Upload your file</h3>
+<body ng-app="app">
+    <div ng-controller="MainCtrl">
+        <rectangle id="container"></rectangle>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-center">
+                    <h3 id="title">Upload your file</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="d-flex justify-content-center align-items-center" id="drop-zone">
-                    <div class="d-flex justify-content-center align-items-center" id="ellipse">
-                        <img src="/icons/arrow-up.svg" alt="arrow-up" id="arrow-up">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-center align-items-center" id="drop-zone">
+                        <div class="d-flex justify-content-center align-items-center" id="ellipse">
+                            <img src="/icons/arrow-up.svg" alt="arrow-up" id="arrow-up">
+                        </div>
+                        <p id="action-text">Drag & Drop your files here or choose file</p>
+                        <p id="description">No size limit</p>
                     </div>
-                    <p id="action-text">Drag & Drop your files here or choose file</p>
-                    <p id="description">No size limit</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12 d-flex justify-content-center align-items-center">
-                <div class="d-flex align-items-center" id="search-box">
-                    <img src="/icons/search.svg" alt="search" id="search-icon">
-                    <input type="search" name="search" id="search-bar" placeholder="Search...">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 d-flex justify-content-center align-items-center">
+                    <div class="d-flex align-items-center" id="search-box">
+                        <img src="/icons/search.svg" alt="search" id="search-icon">
+                        <input type="text" name="search" id="search-bar" placeholder="Search...">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center align-items-center">
-            <table class="table table-striped " id="table">
-                <thead>
-                    <tr>
-                        <th scope="col">no</th>
-                        <th scope="col">Id opt</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date Joined</th>
-                        <th scope="col">Section</th>
-                        <th scope="col">Line</th>
-                        <th scope="col">Date Resign</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in jsonData | filter: search">
-                        <th scope="row">{{item.no}}</th>
-                        <td>{{item["id opt"]}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item["joined date"]}}</td>
-                        <td>{{item.section}}</td>
-                        <td>{{item.line}}</td>
-                        <td>{{item["resigned date"]}}</td>
-                    </tr>
-            </table>
+            <div class="row d-flex justify-content-center align-items-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in jsonData track by $index">
+                            <td>{{data.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    
 </body>
 </html>
+
+<!--
+    <th scope="col">no</th>
+                            <th scope="col">Id opt</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date Joined</th>
+                            <th scope="col">Section</th>
+                            <th scope="col">Line</th>
+                            <th scope="col">Date Resign</th>
+    
+    <th scope="row">{{item.no}}</th>
+                            <td>{{item["id opt"]}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item["joined date"]}}</td>
+                            <td>{{item.section}}</td>
+                            <td>{{item.line}}</td>
+                            <td>{{item["resigned date"]}}</td>-->

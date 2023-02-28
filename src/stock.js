@@ -1,3 +1,5 @@
+var jsonData = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     const dropZone = document.getElementById('drop-zone');
   
@@ -34,10 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const workbook = XLSX.read(data, { type: 'array' });
           const worksheet = workbook.Sheets['Sheet1'];
           if (worksheet) {
-            const jsonData = XLSX.utils.sheet_to_json(worksheet);
-            //console.log(jsonData);
-            //displayData(jsonData);
-            $scope.jsonData = jsonData;
+            jsonData = XLSX.utils.sheet_to_json(worksheet);
+            console.log(jsonData);
+            searchData();
           } else {
             console.error('Sheet1 not found in workbook');
           }
@@ -48,8 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(files[0]);
   }
 
+  // Search data
+  function searchData() {
+    let text = document.getElementById('search-bar').value;
+    displayData(text);
+  }
+
   // Display data in table
-  /*function displayData(jsonData) {
+  function displayData(text) {
+    console.log(text);
     const table = document.getElementById('table');
     const numRows = jsonData.length;
 
@@ -71,4 +79,4 @@ document.addEventListener('DOMContentLoaded', () => {
       line.textContent = jsonData[i].line;
       resigned.textContent = jsonData[i]["resigned date"];
     }
-  }*/
+  }
