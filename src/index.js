@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to the drop zone
     dropZone.addEventListener('dragover', handleDragOver);
     dropZone.addEventListener('drop', handleFileDrop);
-    dropZone.addEventListener('change', readFile);
   });
   
   // Handle dragover event
@@ -17,60 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const files = event.dataTransfer.files;
     handleFiles(files);
+    convertToJSON(files);
   }
   
   // Handle selected files
   function handleFiles(files) {
-    for (let i = 0; i < files.length; i++) {
-      // Do something with each file, for example:
-      console.log(files[i].name);
-      console.log(files[i].size);
-      console.log(files[i].type);
-      alert("File Name: " + files[i].name + '\n' + "File Type: " + files[i].size);
+      console.log(files[0].name);
+      console.log(files[0].size);
+      console.log(files[0].type);
+  }
+
+  function convertToJSON(files) {
+    const reader = new FileReader();
+        reader.onload = (event) => {
+          const data = new Uint8Array(event.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const worksheet = workbook.Sheets['Sheet1'];
+          if (worksheet) {
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            console.log(jsonData);
+            displayData(jsonData);
+          } else {
+            console.error('Sheet1 not found in workbook');
+          }
+        };
+        reader.onerror = (event) => {
+          console.error('File could not be read! Code ' + event.target.error.code);
+        };
+        reader.readAsArrayBuffer(files[0]);
+  }
+
+
+  function displayData(jsonData) {
+    for (let i = 0; i < jsonData.length; i++) {
+      console.log(jsonData[i].no);
     }
   }
-
-  function readFile(file) {
-    const table = document.getElementById('table');
-    
-    readXlsxFile(file).then((rows) => {
-        // Clear the table
-        table.innerHTML = '';
-
-        // Add the rows to the table
-        rows.forEach((row) => {
-            const tr = document.createElement('tr');
-            row.forEach((cell) => {
-                const td = document.createElement('td');
-                td.textContent = cell;
-                tr.appendChild(td);
-            });
-            table.appendChild(tr);
-        });
-    });
-  }
-
-  // Action: Read XLXS file
-  /*const input = document.getElementById('file-input');
-    const table = document.getElementById('table');
- 
-    input.addEventListener('change', (event) => {
-        const file = event.target.files[0];
- 
-        readXlsxFile(file).then((rows) => {
-            // Clear the table
-            table.innerHTML = '';
- 
-            // Add the rows to the table
-            rows.forEach((row) => {
-                const tr = document.createElement('tr');
-                row.forEach((cell) => {
-                    const td = document.createElement('td');
-                    td.textContent = cell;
-                    tr.appendChild(td);
-                });
-                table.appendChild(tr);
-            });
-        });
-    });*/
-  
