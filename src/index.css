@@ -91,27 +91,28 @@
     top: 2.8rem;
 }
 
-#search-box {
+#search-box{
     box-sizing: border-box;
 
-    position: absolute;
-    width: 60rem;
-    height: 2.5rem;
-    top: 20.6rem;
+    position: relative;
+    width: 57rem;
+    height: 2.7rem;
+    margin-top: 5rem;
 
     background: #FFFFFF;
     border: 1px solid #000000;
-    border-radius: 7px;
+    border-radius: 10px;
 }
 
-#search {
-    margin: 1rem;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
+#search-bar {
+    border: none;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 
-    color: #000000;
+#search-bar:focus {
+    outline: none;
 }
 
 #search-icon {

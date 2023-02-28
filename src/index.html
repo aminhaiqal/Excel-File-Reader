@@ -34,36 +34,25 @@
             <div class="col-sm-12 d-flex justify-content-center align-items-center">
                 <div class="d-flex align-items-center" id="search-box">
                     <img src="/icons/search.svg" alt="search" id="search-icon">
-                    <p id="search">Search...</p>
+                    <input type="search" name="search" id="search-bar" placeholder="Search..." onclick="searchData()">
                 </div>
             </div>
         </div>
-        <div class="row d-flex justify-content-center align-items-center">
-            <table class="table table-striped " id="table">
-                <!--<thead>
-                  <tr>
-                    <th scope="col">no</th>
-                    <th scope="col">Id opt</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Date Joined</th>
-                    <th scope="col">Date Resign</th>
-                    <th scope="col">Section</th>
-                    <th scope="col">Line</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>A20EC0207</td>
-                    <td>amin </td>
-                    <td>2 Feb 2021</td>
-                    <td>2 Sept 2022</td>
-                    <td>S27</td>
-                    <td>Piano</td>
-                  </tr>
-                </tbody>-->
-              </table>
-        </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <table class="table table-striped " id="table">
+            <thead>
+              <tr>
+                <th scope="col">no</th>
+                <th scope="col">Id opt</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date Joined</th>
+                <th scope="col">Section</th>
+                <th scope="col">Line</th>
+                <th scope="col">Date Resign</th>
+              </tr>
+            </thead>
+          </table>
     </div>
 </body>
 </html>
