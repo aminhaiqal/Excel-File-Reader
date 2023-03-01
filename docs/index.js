@@ -1,10 +1,17 @@
 var app = angular.module('app', ['ngRoute']);
 app.controller("MainCtrl", function ($scope) {
   $scope.jsonData = [];
-
   const dropZone = document.getElementById("drop-zone");
+
   dropZone.addEventListener("dragover", handleDragOver);
   dropZone.addEventListener("drop", handleFileDrop);
+
+  // Singleton
+  function singleton() {
+    if ($scope.jsonData.length > 0) {
+      clear();
+    }
+  }
 
   // Handle dragover event
   function handleDragOver(event) {
@@ -13,6 +20,7 @@ app.controller("MainCtrl", function ($scope) {
 
   // Handle file drop event
   function handleFileDrop(event) {
+    singleton();
     event.preventDefault();
     const files = event.dataTransfer.files;
     handleFiles(files);
@@ -63,6 +71,12 @@ app.controller("MainCtrl", function ($scope) {
       $scope.jsonData[i]["joined date"] = convertDate(json[i]["joined date"]);
       $scope.jsonData[i]["resigned date"] = convertDate(json[i]["resigned date"]);
     }
+    $scope.$apply();
+  }
+
+  // Clear json data
+  function clear() {
+    $scope.jsonData = [];
     $scope.$apply();
   }
 });
