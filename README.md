@@ -4,6 +4,8 @@ A user need to drag and drop spreadsheets (.xlsx) file format and start searchin
 
 <img width="960" alt="Screenshot 2023-03-01 122301" src="https://user-images.githubusercontent.com/73211654/222065746-4fa511ea-e2ef-408b-a33d-ea1b86650569.png">
 
+<br>
 Try our website and experience the benefits: https://aminhaiqal.github.io/Excel-File-Reader/
+Directory path for excel file: /docs/src/book1.xlsx
 
 ![Screenshot 2023-03-01 122236](https://user-images.githubusercontent.com/73211654/222071555-91382f1e-1793-4b84-a31e-8222cbba239a.png)
