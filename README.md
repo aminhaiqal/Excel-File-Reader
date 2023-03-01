@@ -6,4 +6,4 @@ A user need to drag and drop spreadsheets (.xlsx) file format and start searchin
 
 Try our website and experience the benefits: https://aminhaiqal.github.io/Excel-File-Reader/
 
-![figure2](https://user-images.githubusercontent.com/73211654/222070467-ccbe389d-68aa-4820-8968-4414e089c87a.jpg)
+![Screenshot 2023-03-01 122236](https://user-images.githubusercontent.com/73211654/222071555-91382f1e-1793-4b84-a31e-8222cbba239a.png)
