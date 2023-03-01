@@ -10,4 +10,4 @@ Directory path for excel file: https://github.com/aminhaiqal/Excel-File-Reader/t
 <br>
 <br>
 
-![Screenshot 2023-03-01 122236](https://user-images.githubusercontent.com/73211654/222071555-91382f1e-1793-4b84-a31e-8222cbba239a.png)
+![Screenshot 2023-03-01 122236](https://user-images.githubusercontent.com/73211654/222073700-362aeff3-a3c4-443e-9715-26563fd23bf7.png)
